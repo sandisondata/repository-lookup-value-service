@@ -65,8 +65,8 @@ export class Service extends BaseService<
     const debug = new Debug(`${this.debugSource}.preUpdate`);
     debug.write(MessageType.Entry);
     if (
-      typeof this.updateData.lookup_uuid !== 'undefined' &&
-      this.updateData.lookup_uuid !== this.row.lookup_uuid
+      typeof this.updateData.lookup_uuid != 'undefined' &&
+      this.updateData.lookup_uuid != this.row.lookup_uuid
     ) {
       throw new BadRequestError('lookup_uuid is not updateable');
     }
@@ -79,8 +79,8 @@ export class Service extends BaseService<
     lookup = await lookupService.findOne(this.query, lookupPrimaryKey);
     debug.write(MessageType.Value, `lookup=${JSON.stringify(lookup)}`);
     if (
-      typeof this.updateData.lookup_code !== 'undefined' &&
-      this.updateData.lookup_code !== this.row.lookup_code
+      typeof this.updateData.lookup_code != 'undefined' &&
+      this.updateData.lookup_code != this.row.lookup_code
     ) {
       const uniqueKey1 = {
         lookup_uuid: this.row.lookup_uuid,
@@ -94,8 +94,8 @@ export class Service extends BaseService<
       await checkUniqueKey(this.query, this.tableName, uniqueKey1);
     }
     if (
-      typeof this.updateData.meaning !== 'undefined' &&
-      this.updateData.meaning !== this.row.meaning
+      typeof this.updateData.meaning != 'undefined' &&
+      this.updateData.meaning != this.row.meaning
     ) {
       const uniqueKey2 = {
         lookup_uuid: this.row.lookup_uuid,

@@ -47,8 +47,8 @@ class Service extends base_service_class_1.BaseService {
         return __awaiter(this, void 0, void 0, function* () {
             const debug = new node_debug_1.Debug(`${this.debugSource}.preUpdate`);
             debug.write(node_debug_1.MessageType.Entry);
-            if (typeof this.updateData.lookup_uuid !== 'undefined' &&
-                this.updateData.lookup_uuid !== this.row.lookup_uuid) {
+            if (typeof this.updateData.lookup_uuid != 'undefined' &&
+                this.updateData.lookup_uuid != this.row.lookup_uuid) {
                 throw new node_errors_1.BadRequestError('lookup_uuid is not updateable');
             }
             const lookupPrimaryKey = { uuid: this.row.lookup_uuid };
@@ -56,8 +56,8 @@ class Service extends base_service_class_1.BaseService {
             debug.write(node_debug_1.MessageType.Step, 'Finding lookup...');
             lookup = yield system_lookup_service_1.service.findOne(this.query, lookupPrimaryKey);
             debug.write(node_debug_1.MessageType.Value, `lookup=${JSON.stringify(lookup)}`);
-            if (typeof this.updateData.lookup_code !== 'undefined' &&
-                this.updateData.lookup_code !== this.row.lookup_code) {
+            if (typeof this.updateData.lookup_code != 'undefined' &&
+                this.updateData.lookup_code != this.row.lookup_code) {
                 const uniqueKey1 = {
                     lookup_uuid: this.row.lookup_uuid,
                     lookup_code: this.updateData.lookup_code,
@@ -66,8 +66,8 @@ class Service extends base_service_class_1.BaseService {
                 debug.write(node_debug_1.MessageType.Step, 'Checking unique key 1...');
                 yield (0, database_helpers_1.checkUniqueKey)(this.query, this.tableName, uniqueKey1);
             }
-            if (typeof this.updateData.meaning !== 'undefined' &&
-                this.updateData.meaning !== this.row.meaning) {
+            if (typeof this.updateData.meaning != 'undefined' &&
+                this.updateData.meaning != this.row.meaning) {
                 const uniqueKey2 = {
                     lookup_uuid: this.row.lookup_uuid,
                     lookup_code: this.updateData.meaning,
